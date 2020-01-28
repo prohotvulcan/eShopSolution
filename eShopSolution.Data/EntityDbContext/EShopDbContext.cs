@@ -1,0 +1,45 @@
+﻿using eShopSolution.Data.EntityConfigurations;
+using eShopSolution.Data.EntityModels;
+using Microsoft.EntityFrameworkCore;
+
+namespace eShopSolution.Data.EntityDbContext
+{
+    public class EShopDbContext : DbContext
+    {
+        public EShopDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
+            modelBuilder.ApplyConfiguration(new CaterogyConfiguration());
+            modelBuilder.ApplyConfiguration(new CaterogyTranslationConfiguration());
+            modelBuilder.ApplyConfiguration(new ContactConfiguration());
+            modelBuilder.ApplyConfiguration(new LanguageConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
+            modelBuilder.ApplyConfiguration(new PromotionConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            //base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<AppConfig> AppConfigs { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductInCategory> ProductInCategories { get; set; }
+        public DbSet<ProductTranslation> ProductTranslations { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+    }
+}
