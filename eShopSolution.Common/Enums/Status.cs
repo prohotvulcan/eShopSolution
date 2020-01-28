@@ -1,4 +1,4 @@
-﻿namespace eShopSolution.Data.Enums
+﻿namespace eShopSolution.Common.Enums
 {
     public enum Status
     {
